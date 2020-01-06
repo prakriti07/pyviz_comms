@@ -6,6 +6,8 @@ language: generic
 sudo: false
 os:
   - linux
+arch: 
+  - amd64
 addons:
   firefox: latest
 
@@ -35,15 +37,25 @@ jobs:
       stage: test_pyviz_comms
       env: DESC="dev test_flakes"
       before_install:
-        - pip install pyctdev && doit miniconda_install && pip uninstall -y doit pyctdev
+        - sudo pip install pyctdev
+        - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
+        - chmod +x archiconda.sh
+        - bash archiconda.sh -b -p $HOME/miniconda
         - export PATH="$HOME/miniconda/bin:$PATH" && hash -r
         - conda config --set always_yes True
-        - conda install -c pyviz "pyctdev>=0.5" && doit ecosystem_setup
+        - sudo ln -s $HOME/miniconda/bin/conda /usr/bin/
+        - sudo doit ecosystem_setup
       install:
         - doit env_create $CHANS_DEV --python=$PYENV_VERSION
         - source activate test-environment
-        - doit develop_install $CHANS_DEV -o all
-        - doit env_capture
+        - sudo apt-get install libjpeg-dev zlib1g-dev
+        - sudo rm -f /usr/bin/python && sudo ln -s $HOME/miniconda/envs/test-environment/bin/python /usr/bin/python 
+        - sudo conda install conda
+        - sudo pip install "pyctdev>=0.5" "certifi==2019.11.28" "pip==19.3.1" "setuptools==42.0.2" "wheel==0.33.6" doit
+        - sudo conda install "ca-certificates==2018.03.07" "libffi==3.2.1" "libgcc-ng==7.3.0" "libstdcxx-ng==7.3.0" "ncurses==6.1" "openssl==1.1.1d" "python==3.6.7" "readline==8.0" "sqlite==3.30.1" "tk==8.6.10" "xz==5.2.4" "zlib==1.2.11" "conda==4.8.0" "cycler==0.10.0" "expat==2.2.6" "freetype==2.9.1" "glob2==0.7" "gmp==6.1.2" "kiwisolver==1.1.0" "libsodium==1.0.16" "libtiff==4.1.0" "pandas==0.25.3" - sudo pip install "bokeh >=1.0.0" "colorcet >=2" "holoviews >=1.11.0" "coveralls" "nose" "flake8" "parameterized" "pytest" "nbsmoke >=0.2.0" "coveralls" "nose" "flake8" "parameterized" "pytest" "nbsmoke >=0.2.0" "param>=1.7.0" "pyct>=0.4.4" "setuptools>=30.3.0" 
+        - sudo doit env_capture
+        - sudo python setup.py install
+        - sudo ln -s /home/travis/miniconda/envs/test-environment/bin/nosetests /usr/bin/nosetests
       script: doit test_flakes
 
     - stage: test_jlab

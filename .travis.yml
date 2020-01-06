@@ -46,7 +46,7 @@ jobs:
         - sudo ln -s $HOME/miniconda/bin/conda /usr/bin/
         - sudo doit ecosystem_setup
       install:
-        - doit env_create $CHANS_DEV --python=$PYENV_VERSION
+        - sudo conda create -n test-environment python=$PYTHON_VERSION
         - source activate test-environment
         - sudo apt-get install libjpeg-dev zlib1g-dev
         - sudo rm -f /usr/bin/python && sudo ln -s $HOME/miniconda/envs/test-environment/bin/python /usr/bin/python 

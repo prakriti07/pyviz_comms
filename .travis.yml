@@ -51,7 +51,7 @@ jobs:
         - sudo apt-get install libjpeg-dev zlib1g-dev
         - sudo rm -f /usr/bin/python && sudo ln -s $HOME/miniconda/envs/test-environment/bin/python /usr/bin/python 
         - sudo conda install conda
-        - pip install --user "pyctdev>=0.5" "certifi==2019.11.28" "pip==19.3.1" "setuptools==42.0.2" "wheel==0.33.6" doit
+        - doit develop_install $CHANS -o tests
         - sudo doit env_capture
         - sudo python setup.py install
         - sudo ln -s /home/travis/miniconda/envs/test-environment/bin/nosetests /usr/bin/nosetests

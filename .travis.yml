@@ -51,6 +51,7 @@ jobs:
         - sudo apt-get install libjpeg-dev zlib1g-dev
         - sudo rm -f /usr/bin/python && sudo ln -s $HOME/miniconda/envs/test-environment/bin/python /usr/bin/python 
         - sudo conda install conda
+        - sudo pip install doit
         - doit develop_install $CHANS -o tests
         - sudo doit env_capture
         - sudo python setup.py install

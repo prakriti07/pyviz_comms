@@ -71,6 +71,9 @@ jobs:
         - sudo conda create -n test-environment python=$PYTHON_VERSION
         - source activate test-environment
         - sudo apt-get install libzmq3-dev
+        - apt update
+        - sudo apt install software-properties-common
+        - sudo add-apt-repository ppa:deadsnakes/ppa
         - sudo apt-get install python3.7-dev 
         - sudo pip install Cython
         - sudo pip install pyzmq

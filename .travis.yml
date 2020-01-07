@@ -72,7 +72,8 @@ jobs:
         - source activate test-environment
         - sudo apt-get install libzmq3-dev
         - sudo conda install conda
-        - sudo conda install nodejs
+        - sudo conda install nodejs notebook 
+        - sudo conda install selenium 
         - sudo pip install --pre jupyterlab
       script:
         - npm install

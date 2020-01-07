@@ -79,9 +79,10 @@ jobs:
       script:
         - npm install
         - npm run build
-        - jupyter labextension install .
-        - jupyter lab clean
-        - jupyter labextension link .
+        - sudo jupyter labextension install .
+        - sudo jupyter lab clean
+        - sudo jupyter labextension link .
+        - sudo pip install jupyterlab
         - python -m jupyterlab.selenium_check
 
     ########## END-USER PACKAGES ##########

@@ -76,8 +76,9 @@ jobs:
         - sudo pip install selenium 
         - sudo pip install --pre jupyterlab
       script:
-        - npm install
+        - sudo npm install
         - npm run build
+        - node -v
         - sudo node -v
         - sudo which npm
         - which npm

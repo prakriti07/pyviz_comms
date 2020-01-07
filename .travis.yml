@@ -71,7 +71,7 @@ jobs:
         - sudo conda create -n test-environment python=$PYTHON_VERSION
         - source activate test-environment
         - sudo apt-get install libzmq3-dev
-        - sudo apt-get install python3-dev 
+        - sudo apt-get install python3.7-dev 
         - sudo pip install Cython
         - sudo pip install pyzmq
         - sudo pip install nodejs notebook selenium

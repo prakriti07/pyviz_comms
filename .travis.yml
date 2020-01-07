@@ -82,9 +82,9 @@ jobs:
         - sudo node -v
         - sudo which npm
         - which npm
-        - sudo jupyter labextension install .
+        - sudo jupyter labextension install . --debug 
         - sudo jupyter lab clean
-        - sudo jupyter labextension link .
+        - sudo jupyter labextension link . --debug 
         - sudo pip install jupyterlab
 
         - sudo python -m jupyterlab.selenium_check

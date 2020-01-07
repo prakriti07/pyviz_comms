@@ -59,15 +59,19 @@ jobs:
         - export PATH=$PATH:$PWD/geckodriver
         - export DISPLAY=:99.0
         - sh -e /etc/init.d/xvfb start || true
-        - pip install pyctdev && doit miniconda_install && pip uninstall -y doit pyctdev
+        - pip install pyctdev
+        - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
+        - chmod +x archiconda.sh
+        - bash archiconda.sh -b -p $HOME/miniconda
         - export PATH="$HOME/miniconda/bin:$PATH" && hash -r
         - conda config --set always_yes True
-        - conda install -c pyviz "pyctdev>=0.5" && doit ecosystem_setup
+        - sudo ln -s $HOME/miniconda/bin/conda /usr/bin/
+        - sudo doit ecosystem_setup
       install:
-        - doit env_create $CHANS_DEV --python=$PYENV_VERSION
+        - sudo conda create -n test-environment python=$PYTHON_VERSION
         - source activate test-environment
-        - conda install nodejs notebook selenium
-        - pip install --pre jupyterlab
+        - sudo pip install nodejs notebook selenium
+        - sudo pip install --pre jupyterlab
       script:
         - npm install
         - npm run build

@@ -72,8 +72,7 @@ jobs:
         - source activate test-environment
         - sudo apt-get install python-dev
         - sudo pip install Cython
-        - sudo conda install conda
-        - sudo conda install nodejs notebook 
+        - sudo pip install nodejs notebook 
         - sudo pip install selenium 
         - sudo pip install --pre jupyterlab
       script:
@@ -83,7 +82,7 @@ jobs:
         - sudo jupyter lab clean
         - sudo jupyter labextension link .
         - sudo pip install jupyterlab
-        - python -m jupyterlab.selenium_check
+        - sudo python -m jupyterlab.selenium_check
 
     ########## END-USER PACKAGES ##########
 

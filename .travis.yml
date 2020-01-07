@@ -48,15 +48,8 @@ jobs:
       install:
         - sudo conda create -n test-environment python=$PYTHON_VERSION
         - source activate test-environment
-        - sudo apt-get install libjpeg-dev zlib1g-dev
-        - sudo rm -f /usr/bin/python && sudo ln -s $HOME/miniconda/envs/test-environment/bin/python /usr/bin/python 
-        - sudo conda install conda
-        - sudo pip install doit
-        - doit develop_install $CHANS -o tests
-        - sudo doit env_capture
-        - sudo python setup.py install
-        - sudo ln -s /home/travis/miniconda/envs/test-environment/bin/nosetests /usr/bin/nosetests
-      script: doit test_flakes
+        - sudo pip install flake8 nose param>=1.7.0 setuptools
+      script: sudo doit test_flakes
 
     - stage: test_jlab
       before_install:

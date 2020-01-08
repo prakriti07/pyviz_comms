@@ -73,12 +73,11 @@ jobs:
         - sudo pip install notebook
         - sudo pip install selenium 
         - sudo conda install conda
-        - sudo conda install jupyterlab
-        - which jupyterlab
+        # sudo conda install jupyterlab
         - sudo conda install nodejs
         - sudo ln -s $HOME/miniconda/envs/test-environment/bin/npm   /usr/bin/
         - sudo ln -s $HOME/miniconda/envs/test-environment/bin/node  /usr/bin/
-        - sudo ln -s $HOME/miniconda/envs/test-environment/bin/jupyterlab  /usr/bin/
+        #udo ln -s $HOME/miniconda/envs/test-environment/bin/jupyterlab  /usr/bin/
       script:
         - sudo npm install
         - npm run build
@@ -89,7 +88,7 @@ jobs:
         - which node
         - export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
         - sudo npm i puppeteer
-        - 
+        - sudo pip install --user jupyterlab
         - sudo jupyter labextension install . --debug 
         - sudo jupyter lab clean
         - sudo jupyter labextension link . --debug 

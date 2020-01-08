@@ -74,7 +74,8 @@ jobs:
         - sudo ln -s $HOME/.nvm/versions/node/v8.12.0/bin/node /usr/bin/
         - sudo ln -s $HOME/.nvm/versions/node/v8.12.0/bin/npm  /usr/bin
         - sudo pip install selenium 
-        - sudo pip install --pre jupyterlab
+        - sudo conda install conda
+        - sudo conda install jupyterlab
       script:
         - sudo npm install
         - npm run build
@@ -85,7 +86,7 @@ jobs:
         - which node
         - export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
         - sudo npm i puppeteer
-        - sudo pip install "jupyterlab==1.0.0"
+        - sudo pip install "jupyterlab"
         - sudo jupyter labextension install . --debug 
         - sudo jupyter lab clean
         - sudo jupyter labextension link . --debug 

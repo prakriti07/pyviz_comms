@@ -70,7 +70,8 @@ jobs:
         - source activate test-environment
         - sudo apt-get install python-dev
         - sudo pip install Cython
-        - sudo pip install nodejs notebook 
+        - sudo pip install nodejs notebook
+        - sudo ln -s /home/travis/.nvm/versions/node/v8.12.0/bin/node /usr/bin/
         - sudo pip install selenium 
         - sudo pip install --pre jupyterlab
       script:
@@ -85,7 +86,6 @@ jobs:
         - sudo jupyter lab clean
         - sudo jupyter labextension link . --debug 
         - sudo pip install jupyterlab
-
         - sudo python -m jupyterlab.selenium_check
 
     ########## END-USER PACKAGES ##########

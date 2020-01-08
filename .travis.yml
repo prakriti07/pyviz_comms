@@ -84,7 +84,7 @@ jobs:
         - which npm
         - which node
         - export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
-        - sudo npm install "puppeteer==8.16.0"
+        - sudo npm i puppeteer
         - sudo pip install "jupyterlab==1.0.0"
         - sudo jupyter labextension install . --debug 
         - sudo jupyter lab clean

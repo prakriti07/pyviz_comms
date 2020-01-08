@@ -74,7 +74,11 @@ jobs:
         - sudo pip install selenium 
         - sudo conda install conda
         - sudo conda install jupyterlab
+        - which jupyterlab
         - sudo conda install nodejs
+        - sudo ln -s $HOME/miniconda/envs/test-environment/bin/npm   /usr/bin/
+        - sudo ln -s $HOME/miniconda/envs/test-environment/bin/node  /usr/bin/
+        - sudo ln -s $HOME/miniconda/envs/test-environment/bin/jupyterlab  /usr/bin/
       script:
         - sudo npm install
         - npm run build

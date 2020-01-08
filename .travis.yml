@@ -71,7 +71,8 @@ jobs:
         - sudo apt-get install python-dev
         - sudo pip install Cython
         - sudo pip install nodejs notebook
-        - sudo ln -s /home/travis/.nvm/versions/node/v8.12.0/bin/node /usr/bin/
+        - sudo ln -s $HOME/.nvm/versions/node/v8.12.0/bin/node /usr/bin/
+        - sudo ln -s $HOME/.nvm/versions/node/v8.12.0/bin/npm  /usr/bin
         - sudo pip install selenium 
         - sudo pip install --pre jupyterlab
       script:

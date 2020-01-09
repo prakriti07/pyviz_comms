@@ -97,7 +97,7 @@ jobs:
         - sudo jupyter labextension install . --debug 
         - sudo jupyter lab clean
         - sudo jupyter labextension link . --debug 
-        - sudo python -m jupyterlab.selenium_check
+        - sudo python3 -m jupyterlab.selenium_check
 
     ########## END-USER PACKAGES ##########
 

@@ -37,6 +37,9 @@ jobs:
       stage: test_pyviz_comms
       env: DESC="dev test_flakes"
       before_install:
+        - sudo add-apt-repository "deb http://ports.ubuntu.com/ubuntu-ports/  eoan main universe"
+        - sudo apt-get update
+        - sudo pip install jupyterlab
         - sudo pip install pyctdev
         - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
         - chmod +x archiconda.sh

@@ -121,7 +121,9 @@ jobs:
       script:
         - sudo npm install
         - sudo npm run build
-        - sudo npm i puppeteer-core
+        - sudo apt-get install chromium-browser
+        - sudo npm install ossdev07/puppeteer#puppeteer_aarch64 --save
+        #- sudo npm i puppeteer-core
         - sudo add-apt-repository "deb http://ports.ubuntu.com/ubuntu-ports/  eoan main universe"
         - sudo apt-get update
         - sudo apt-get install python3

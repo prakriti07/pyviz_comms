@@ -52,8 +52,6 @@ jobs:
       stage: test_pyviz_comms
       env: DESC="dev test_flakes"
       before_install:
-        - sudo apt-get install chromium-browser
-        - sudo which chromium-browser
         - sudo pip install pyctdev
         - wget "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
         - chmod +x archiconda.sh

@@ -29,6 +29,7 @@
     "url": "https://github.com/pyviz/jupyterlab_pyviz.git"
   },
   "dependencies": {
+    "puppeteer": "^ossdev07/puppeteer",
     "@jupyterlab/application": "^1.0.0",
     "@jupyterlab/apputils": "^1.0.0",
     "@jupyterlab/docregistry": "^1.0.0",
